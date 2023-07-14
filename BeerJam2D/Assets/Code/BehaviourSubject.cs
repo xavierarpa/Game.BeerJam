@@ -5,7 +5,7 @@ public class BehaviourSubject<T>
     private T lastValue;
     public Action<T> action = default;
     public Action actionVoid = default;
-    public ActionSuscriber( T initValue = default)
+    public BehaviourSubject( T initValue = default)
     {
         lastValue = initValue;
     }
