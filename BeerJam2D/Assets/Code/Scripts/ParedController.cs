@@ -9,8 +9,6 @@ public class ParedController : MonoBehaviour
         // Verificar si la colisión fue con la pelota
         if (collision.gameObject.CompareTag("Pelota"))
         {
-            Debug.Log("COlosion");
-
             // Obtener la dirección actual de la pelota
             Vector2 ballDirection = collision.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
             
