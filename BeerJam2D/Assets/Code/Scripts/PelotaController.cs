@@ -12,18 +12,12 @@ public class PelotaController : MonoBehaviour
         LaunchBall();
     }
 
-    void Update()
-    {
-        // Controlar la velocidad constante de la pelota
-        rb.velocity = rb.velocity.normalized * speed;
-    }
-
     void LaunchBall()
     {
         // Lanzar la pelota en una dirección aleatoria
         float randomDirectionX = Random.Range(-1f, 1f);
         float randomDirectionY = Random.Range(-1f, 1f);
-        Vector2 launchDirection = new Vector2(randomDirectionX, randomDirectionY).normalized;
+        Vector2 launchDirection = new Vector2(randomDirectionX, randomDirectionY);
         rb.AddForce(launchDirection * speed, ForceMode2D.Impulse);
     }
 }
