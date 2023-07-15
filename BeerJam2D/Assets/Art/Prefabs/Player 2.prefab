@@ -49,8 +49,8 @@ MonoBehaviour:
   xSpeed: 11
   ySpeed: 8
   triggerDuration: 0.3
-  xMax: 1
-  xMin: 6
+  xMax: 6
+  xMin: 1
   direction: -1
   upKey: 273
   downKey: 274
