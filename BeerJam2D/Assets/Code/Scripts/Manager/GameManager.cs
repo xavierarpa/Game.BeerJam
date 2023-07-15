@@ -8,6 +8,12 @@ public class GameManager : MonoBehaviour
     public const int MAX_ROUND = 3;
     public static GameManager _;
 
+    [Header("Settings")]
+    [Space]
+    public AudioClip clip_game;
+    public AudioClip clip_game_loop;
+
+
     [Header("P1 Settings")]
     public BehaviourSubject<int> bs_p1_point = new BehaviourSubject<int>(0);
     public PlayerController p1 = default;
@@ -27,7 +33,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _ = this;
+        if(AudioManager._.src_music.clip == clip_game || AudioManager._.src_music.clip == clip_game_loop)
+        {
+            // nada
+        }
+        else
+        {
+            AudioManager._.PlayMusic(clip_game);
+            this.Invoke(nameof(EnableLoop), clip_game.length - 1);
+        }
+
         ResetGame();
+    }
+    private void EnableLoop()
+    {
+        AudioManager._.PlayMusic(clip_game_loop);
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
