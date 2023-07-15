@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public float speed = 5f; // Velocidad de movimiento de la pelota
+
     public Rigidbody2D rb;
+    public float speed = 5f; // Velocidad de movimiento de la pelota
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         LaunchBall();
     }
 

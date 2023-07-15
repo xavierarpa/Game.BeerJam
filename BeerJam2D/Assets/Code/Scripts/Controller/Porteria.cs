@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class Porteria : MonoBehaviour
 {
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public CollisionController collision = default;
+    private void OnEnable() => Suscribe(true);
+    private void OnDisable() => Suscribe(false);
+    private void Suscribe(bool condition)
     {
-        Debug.Log("Collision");
+        if (condition) collision.OnCollision += OnCollision;
+        else collision.OnCollision -= OnCollision;
+    }
+
+    void OnCollision(Collision2D collision)
+    {
+        Debug.Log(this);
+        
+        if (collision.gameObject.tag.Equals("Pelota"))
+        {
+
+        }
+
     }
 }
