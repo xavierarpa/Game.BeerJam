@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
             // Func end
 
             // END GAME
-            Debug.Log("END GAME");
+            Debug.Log($"END GAME: {player}");
+            Time.timeScale = 0;
         }
         else
         {
