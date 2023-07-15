@@ -6,8 +6,11 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     public TrailRenderer trail;
     public float speed = 5f; // Velocidad de movimiento de la pelota
-    
     public float fireTrailSpeed = 5f;
+
+    [Header("Settings")]
+    [Space]
+    public float min_mass;
 
     void Start()
     {
@@ -30,5 +33,10 @@ public class Ball : MonoBehaviour
     private float MinMax(float min, float max) 
     {
         return (Random.Range(0, 2) == 0 ? 1 : -1) * Random.Range(min,max);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // collision
     }
 }
