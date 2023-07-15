@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 846938306445758102}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
   triggerDuration: 0.3
   xMax: 1
   xMin: 6
-  upKey: 119
-  downKey: 115
-  leftKey: 97
-  rightKey: 100
+  upKey: 273
+  downKey: 274
+  leftKey: 276
+  rightKey: 275
   hitKey: 305
   triggerObject: {fileID: 4663747001655122992}
   trigger: {fileID: 476051827815281787}

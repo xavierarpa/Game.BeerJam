@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
         {
             // play pop up animationif shock
             // TODO
-            collider.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.one, transform.position);
+            Debug.Log("pelota");
+            triggerObject.SetActive(false);
+            collider.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.right, transform.position);
         }
         
     }

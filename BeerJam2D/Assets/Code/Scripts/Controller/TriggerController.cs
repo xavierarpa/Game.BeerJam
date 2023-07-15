@@ -10,7 +10,7 @@ public class TriggerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Señorehhh");
-        OnTriggerVoid.Invoke();
+        //OnTriggerVoid.Invoke();
         OnTrigger?.Invoke(collision);
     }
 }
