@@ -398,6 +398,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 846938306445758103, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
   m_PrefabInstance: {fileID: 846938307247239612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1075171930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4706785353642104699, guid: 1904bb0329760490fb06c11d522eaccb, type: 3}
+  m_PrefabInstance: {fileID: 3988163940935975184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af47868e9754f4b6c8fdeef61df7924f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1203427204
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,13 +439,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bs_p1_point:
-    lastValue: 0
+    <LastValue>k__BackingField: 0
   p1: {fileID: 1265587413}
   porteria_p1: {fileID: 6421604998856720047}
   bs_p2_point:
-    lastValue: 0
+    <LastValue>k__BackingField: 0
   p2: {fileID: 813350698}
   porteria_p2: {fileID: 1356025368}
+  ball: {fileID: 1075171930}
 --- !u!4 &1203427206
 Transform:
   m_ObjectHideFlags: 0
@@ -898,14 +910,6 @@ PrefabInstance:
     - target: {fileID: 846938306445758101, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
       propertyPath: m_Name
       value: player_two
-      objectReference: {fileID: 0}
-    - target: {fileID: 846938306445758102, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
-      propertyPath: xMax
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 846938306445758102, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
-      propertyPath: xMin
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846938306445758103, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
       propertyPath: m_RootOrder

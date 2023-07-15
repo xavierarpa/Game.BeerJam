@@ -4,14 +4,21 @@ public class Ball : MonoBehaviour
 {
 
     public Rigidbody2D rb;
+    public TrailRenderer trail;
     public float speed = 5f; // Velocidad de movimiento de la pelota
+    
+    public float fireTrailSpeed = 5f;
 
     void Start()
     {
         LaunchBall();
     }
+    private void Update()
+    {
+        trail.emitting = rb.velocity.magnitude >= fireTrailSpeed;
+    }
 
-    void LaunchBall()
+    public void LaunchBall()
     {
         // Lanzar la pelota en una dirección aleatoria
         float randomDirectionX = Random.Range(-1f, 1f);

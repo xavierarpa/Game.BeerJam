@@ -4,16 +4,16 @@ using UnityEngine;
 [Serializable]
 public class BehaviourSubject<T>
 {
-    [SerializeField] private T lastValue;
+    [field: SerializeField] public T LastValue {get; private set;}
     public Action<T> action = default;
     public Action actionVoid = default;
     public BehaviourSubject( T initValue = default)
     {
-        lastValue = initValue;
+        LastValue = initValue;
     }
     public void Subscribe(bool condition, Action<T> callback)
     {
-        if (condition) callback.Invoke(lastValue);
+        if (condition) callback.Invoke(LastValue);
         SubscribeWithoutNotify(condition, callback);
     }
     public void SubscribeWithoutNotify(bool condition, Action<T> callback){
@@ -32,12 +32,12 @@ public class BehaviourSubject<T>
     }
     public void Invoke(T val)
     {
-        lastValue = val;
+        LastValue = val;
         Invoke();
     }
     public void Invoke()
     {
-        action?.Invoke(lastValue);
+        action?.Invoke(LastValue);
         actionVoid?.Invoke();
     }
 }

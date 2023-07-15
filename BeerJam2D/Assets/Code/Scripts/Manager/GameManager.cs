@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public PlayerController p2 = default;
     public Porteria porteria_p2 = default;
 
+    [Header("Pelota Settings")]
+    [Space]
+    public Ball ball;
+
 
     private void Awake()
     {
@@ -31,12 +35,16 @@ public class GameManager : MonoBehaviour
     {
         bs_p1_point.Subscribe(condition, CheckWinCondition_P1);
         bs_p2_point.Subscribe(condition, CheckWinCondition_P2);
+        condition.Subscribe(ref porteria_p1.OnPelotaCollide, OnPelotaCollidePorteria_P1);
+        condition.Subscribe(ref porteria_p2.OnPelotaCollide, OnPelotaCollidePorteria_P2);
     }
     public void ResetGame()
     {
         bs_p1_point.Invoke(0);
         bs_p2_point.Invoke(0);
     }
+    public void OnPelotaCollidePorteria_P1() => bs_p2_point.Invoke(bs_p2_point.LastValue + 1);
+    public void OnPelotaCollidePorteria_P2() => bs_p1_point.Invoke(bs_p1_point.LastValue + 1);
     public void CheckWinCondition_P1(int value) => CheckWinCondition(value, 1);
     public void CheckWinCondition_P2(int value) => CheckWinCondition(value, 2);
     public void CheckWinCondition(int value, int player)
@@ -48,12 +56,18 @@ public class GameManager : MonoBehaviour
             // Func end
 
             // END GAME
+            Debug.Log("END GAME");
         }
         else
         {
             //
             // END ROUND
             //Func  reset positions
+            ball.rb.velocity=Vector2.zero;
+            ball.rb.position=Vector2.zero;
+            ball.transform.position = Vector3.zero;
+            ball.LaunchBall();
+            Debug.Log("END ROUND");
         }
     }
     public bool SurpassRounds(int value) => value >= MAX_ROUND;
