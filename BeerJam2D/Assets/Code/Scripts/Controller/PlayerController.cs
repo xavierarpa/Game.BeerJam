@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     public float triggerDuration = 0.3f;
     public float xMax = 4.8f;
     public float xMin = 0f;
+    public float xLimit_critical = 0f;
     public int direction = 1;
+    public float dashExtraSpeed = 3f;
 
     [Header("Controller")]
     [Space]
@@ -22,27 +24,47 @@ public class PlayerController : MonoBehaviour
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode hitKey;
+    public KeyCode dashKey;
 
     [Header("References")]
     [Space]
-    public GameObject triggerObject;
+    public GameObject obj_parent_triggers;
     public TriggerController trigger;
+    public TriggerController trigger_critical;
     public HandSprite handSprite;
-    private bool CanHit => !triggerObject.activeInHierarchy;
+    private bool CanHit => !obj_parent_triggers.activeInHierarchy;
+    private float dashXSpeed;
+    private float dashYSpeed;
 
     void Start()
     {
-        triggerObject = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
-        triggerObject.SetActive(false);
+        obj_parent_triggers.SetActive(false);
+        dashXSpeed = xSpeed + dashExtraSpeed;
+        dashYSpeed = ySpeed + dashExtraSpeed;
     }
     private void OnEnable() => Suscribe(true);
     private void OnDisable() => Suscribe(false);
     private void Suscribe(bool condition)
     {
-        if (condition) trigger.OnTrigger += OnTrigger;
-        else trigger.OnTrigger -= OnTrigger;
+        condition.Subscribe(ref trigger.OnTrigger, OnTrigger);
+        condition.Subscribe(ref trigger_critical.OnTrigger, OnTrigger_Critical);
     }
 
+    void OnTrigger_Critical(Collider2D collider)
+    {
+        if (collider.tag.Equals("Pelota"))
+        {
+            obj_parent_triggers.SetActive(false);
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            //stop ball
+            rb.velocity = Vector2.zero;
+            //apply impulse based on the collision's y position
+            float yImpulse = -(obj_parent_triggers.transform.position.y - collider.ClosestPoint(obj_parent_triggers.transform.position).y);
+            Vector2 mPos = new Vector2(direction, yImpulse);
+
+            rb.AddForceAtPosition(mPos * 9 * 1.5F, collider.transform.position, ForceMode2D.Impulse);
+        }
+    }
     void OnTrigger(Collider2D collider)
     {
         // Play GIF animati
@@ -51,12 +73,12 @@ public class PlayerController : MonoBehaviour
         {
             // play pop up animationif shock
             // TODO
-            triggerObject.SetActive(false);
+            obj_parent_triggers.SetActive(false);
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
             //stop ball
             rb.velocity = Vector2.zero;
             //apply impulse based on the collision's y position
-            float yImpulse = -(triggerObject.transform.position.y - collider.ClosestPoint(triggerObject.transform.position).y);
+            float yImpulse = -(obj_parent_triggers.transform.position.y - collider.ClosestPoint(obj_parent_triggers.transform.position).y);
             Vector2 mPos = new Vector2(direction, yImpulse);
 
             rb.AddForceAtPosition(mPos * 9, collider.transform.position, ForceMode2D.Impulse);
@@ -68,7 +90,10 @@ public class PlayerController : MonoBehaviour
         // Update position
         transform.position += CalculatePosition();
         HitMovement();
+        PerformDash();
 
+        // P1
+        trigger_critical.gameObject.SetActive(transform.position.x >= -xLimit_critical && transform.position.x >= -xLimit_critical);
     }
     private void OnDrawGizmosSelected()
     {
@@ -80,6 +105,9 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(new Vector3(xMin, yMax, 0), new Vector3(xMin, -yMax, 0));
 
+        // CRITICAL LIMIT
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(new Vector3(xLimit_critical, yMax, 0), new Vector3(xLimit_critical, -yMax, 0));
     }
     private void HitMovement()
     {
@@ -150,11 +178,19 @@ public class PlayerController : MonoBehaviour
         return (Vector3)nPos * Time.deltaTime;
     }
 
+    private void PerformDash()
+    {
+        if (Input.GetKeyDown(dashKey))
+        {
+
+        }
+    }
+
     IEnumerator trigger_duration()
     {
-        triggerObject.SetActive(true);
+        obj_parent_triggers.SetActive(true);
         yield return new WaitForSeconds(triggerDuration);
-        triggerObject.SetActive(false);
+        obj_parent_triggers.SetActive(false);
     }
 
 }
