@@ -1,8 +1,10 @@
 ﻿using System;
+using UnityEngine;
 
+[Serializable]
 public class BehaviourSubject<T>
 {
-    private T lastValue;
+    [SerializeField] private T lastValue;
     public Action<T> action = default;
     public Action actionVoid = default;
     public BehaviourSubject( T initValue = default)
