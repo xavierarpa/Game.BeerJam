@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             float yImpulse = -(obj_parent_triggers.transform.position.y - collider.ClosestPoint(obj_parent_triggers.transform.position).y);
             Vector2 mPos = new Vector2(direction, yImpulse);
 
-            rb.AddForceAtPosition(mPos * 9 * 1.5F, collider.transform.position, ForceMode2D.Impulse);
+            rb.AddForceAtPosition(mPos * 9 * 2f, collider.transform.position, ForceMode2D.Impulse);
         }
     }
     void OnTrigger(Collider2D collider)
