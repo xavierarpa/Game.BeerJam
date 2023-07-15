@@ -382,6 +382,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813350698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 846938306445758102, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
+  m_PrefabInstance: {fileID: 846938307247239612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4aff1e9b68c6647a39fdfd8efdf4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &813350699 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 846938306445758103, guid: 3dff5c34ca1b2403e961ab906b03fb0a, type: 3}
@@ -418,12 +429,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bs_p1_point:
     lastValue: 0
-  p1: {fileID: 0}
-  porteria_p1: {fileID: 0}
+  p1: {fileID: 1265587413}
+  porteria_p1: {fileID: 6421604998856720047}
   bs_p2_point:
     lastValue: 0
-  p2: {fileID: 0}
-  porteria_p2: {fileID: 0}
+  p2: {fileID: 813350698}
+  porteria_p2: {fileID: 1356025368}
 --- !u!4 &1203427206
 Transform:
   m_ObjectHideFlags: 0
@@ -475,6 +486,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3157683026006222553, guid: bd86cfa3920e7418bb95c3f89c544399, type: 3}
   m_PrefabInstance: {fileID: 3157683025044501005}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1265587413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3157683026006222552, guid: bd86cfa3920e7418bb95c3f89c544399, type: 3}
+  m_PrefabInstance: {fileID: 3157683025044501005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4aff1e9b68c6647a39fdfd8efdf4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1352789171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,7 +507,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5469738464891203379, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
       propertyPath: m_Name
-      value: Porteria (1)
+      value: Porteria P2
       objectReference: {fileID: 0}
     - target: {fileID: 5469738464891203389, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
       propertyPath: m_RootOrder
@@ -539,6 +561,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5469738464891203389, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
   m_PrefabInstance: {fileID: 1352789171}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356025368 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7046393857646187933, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
+  m_PrefabInstance: {fileID: 1352789171}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f178d7cc6ca4644810bf3f15fe1195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1519372416
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5469738464891203379, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
       propertyPath: m_Name
-      value: Porteria
+      value: Porteria P1
       objectReference: {fileID: 0}
     - target: {fileID: 5469738464891203389, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
       propertyPath: m_RootOrder
@@ -1095,3 +1128,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5469738464891203389, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
   m_PrefabInstance: {fileID: 1366408859670499731}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6421604998856720047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7046393857646187933, guid: ede9acbb7fd484b59bc23a9ce785fb88, type: 3}
+  m_PrefabInstance: {fileID: 1366408859670499731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f178d7cc6ca4644810bf3f15fe1195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
