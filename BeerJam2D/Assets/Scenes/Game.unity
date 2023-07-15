@@ -512,7 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312b4c81dbd724d0fa63c6894655bf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip_game: {fileID: 8300000, guid: 1017e2df0fd3b412aa99d2ce9c237c87, type: 3}
   clip_game_loop: {fileID: 8300000, guid: 5aeaff589af404eb7a499cd65d32b163, type: 3}
   bs_p1_point:
     <LastValue>k__BackingField: 0

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     [Space]
-    public AudioClip clip_game;
     public AudioClip clip_game_loop;
 
 
@@ -33,21 +32,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _ = this;
-        if(AudioManager._.src_music.clip == clip_game || AudioManager._.src_music.clip == clip_game_loop)
-        {
-            // nada
-        }
-        else
-        {
-            AudioManager._.PlayMusic(clip_game);
-            this.Invoke(nameof(EnableLoop), clip_game.length - 1);
-        }
-
-        ResetGame();
-    }
-    private void EnableLoop()
-    {
         AudioManager._.PlayMusic(clip_game_loop);
+        ResetGame();
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
@@ -77,7 +63,7 @@ public class GameManager : MonoBehaviour
 
             // END GAME
             // Debug.Log($"END GAME: {player}");
-            // Time.timeScale = 0;
+            Time.timeScale = 0;
         }
         else
         {

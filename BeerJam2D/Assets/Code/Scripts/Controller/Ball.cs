@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-
+    private static Ball _; 
     public Rigidbody2D rb;
     public TrailRenderer trail;
+    public ParticleSystem ps_handicap;
+    public ParticleSystem ps_impact;
     public float speed = 5f; // Velocidad de movimiento de la pelota
     public float fireTrailSpeed = 5f;
+
 
     [Header("Settings")]
     [Space]
@@ -16,6 +19,10 @@ public class Ball : MonoBehaviour
     public float base_mass;
     public float reductor_mass;
 
+    void Awake()
+    {
+        _=this;
+    }
     void Start()
     {
         LaunchBall();
@@ -32,6 +39,7 @@ public class Ball : MonoBehaviour
         transform.position = Vector3.zero;
         count_touches_to_reduce = 0;
         rb.mass = base_mass;
+        ps_handicap.Stop();
     }
     public void LaunchBall()
     {
@@ -47,6 +55,10 @@ public class Ball : MonoBehaviour
         return (Random.Range(0, 2) == 0 ? 1 : -1) * Random.Range(min,max);
     }
 
+    public static void PlayImpact()
+    {
+        _.ps_impact.Play();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -59,6 +71,8 @@ public class Ball : MonoBehaviour
             }
             else
             {
+                ps_handicap.Play();
+
                 if(rb.mass > min_mass)
                 {
                     rb.mass -= reductor_mass;

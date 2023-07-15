@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.tag.Equals("Pelota"))
         {
+            Ball.PlayImpact();
             CameraController._.Shake();
             obj_parent_triggers.SetActive(false);
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
