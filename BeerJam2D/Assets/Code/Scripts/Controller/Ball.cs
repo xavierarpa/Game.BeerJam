@@ -23,10 +23,6 @@ public class Ball : MonoBehaviour
     {
         _=this;
     }
-    void Start()
-    {
-        LaunchBall();
-    }
     private void Update()
     {
         trail.emitting = rb.velocity.magnitude >= fireTrailSpeed;

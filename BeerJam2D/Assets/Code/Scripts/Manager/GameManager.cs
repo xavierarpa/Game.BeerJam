@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     [Space]
     public AudioClip clip_game_loop;
+    public Animator countdownAnimation; 
 
 
     [Header("P1 Settings")]
@@ -44,10 +45,18 @@ public class GameManager : MonoBehaviour
         condition.Subscribe(ref porteria_p1.OnPelotaCollide, OnPelotaCollidePorteria_P1);
         condition.Subscribe(ref porteria_p2.OnPelotaCollide, OnPelotaCollidePorteria_P2);
     }
+    private void StartCountdown()
+    {
+        countdownAnimation.SetTrigger("321");
+        StartCoroutine(start_countdown());
+    }
     public void ResetGame()
     {
         bs_p1_point.Invoke(0);
         bs_p2_point.Invoke(0);
+        ball.Reset();
+        StartCountdown();
+
     }
     public void OnPelotaCollidePorteria_P1() => bs_p2_point.Invoke(bs_p2_point.LastValue + 1);
     public void OnPelotaCollidePorteria_P2() => bs_p1_point.Invoke(bs_p1_point.LastValue + 1);
@@ -55,7 +64,7 @@ public class GameManager : MonoBehaviour
     public void CheckWinCondition_P2(int value) => CheckWinCondition(value, 2);
     public void CheckWinCondition(int value, int player)
     {
-        if(SurpassRounds(value))
+        if (SurpassRounds(value))
         {
             //Ha ganao player
             // TOdo
@@ -65,7 +74,8 @@ public class GameManager : MonoBehaviour
             // Debug.Log($"END GAME: {player}");
             Time.timeScale = 0;
         }
-        else
+        // En el round 0 se ejecutará el countdown
+        else if(value != 0)
         {
             //
             // END ROUND
@@ -78,4 +88,9 @@ public class GameManager : MonoBehaviour
     public bool SurpassRounds(int value) => value >= MAX_ROUND;
     public void GoToMenu() => SceneManager.LoadScene("Menu");
     public void Replay() => SceneManager.LoadScene("Game");
+    IEnumerator start_countdown()
+    {
+        yield return new WaitForSeconds(3f);
+        ball.LaunchBall();
+    }
 }
