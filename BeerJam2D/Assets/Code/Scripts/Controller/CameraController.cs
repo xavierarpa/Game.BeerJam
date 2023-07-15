@@ -16,25 +16,24 @@ public class CameraController : MonoBehaviour
     // Initial position of the camera
     private Vector3 initialPosition;
 
-    public CriticalShotController trigger_1;
-    public CriticalShotController trigger_2;
+    public static CameraController _;
 
     private void OnEnable() => Suscribe(true);
     private void OnDisable() => Suscribe(false);
     private void Suscribe(bool condition)
     {
-        condition.Subscribe(ref trigger_1.OnTrigger, Shake);
-        condition.Subscribe(ref trigger_2.OnTrigger, Shake);
     }
 
     private void Awake()
     {
+        _ = this;
+
         cameraTransform = GetComponent<Transform>();
         // Store the initial position of the camera
         initialPosition = cameraTransform.localPosition;
     }
 
-    void Shake()
+    public void Shake()
     {
         Debug.Log("shakea");
         StartCoroutine(ShakeCamera());
