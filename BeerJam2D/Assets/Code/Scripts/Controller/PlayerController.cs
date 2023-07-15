@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     public GameObject triggerObject;
     public TriggerController trigger;
+    public HandSprite handSprite;
     private bool CanHit => !triggerObject.activeInHierarchy;
 
     void Start()
@@ -84,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(hitKey) && CanHit)
         {
+            handSprite.Animate_Action();
             StartCoroutine(trigger_duration());
         }
     }
