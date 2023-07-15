@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
             // Func end
 
             // END GAME
-            Debug.Log($"END GAME: {player}");
+            // Debug.Log($"END GAME: {player}");
             // Time.timeScale = 0;
         }
         else
@@ -84,11 +84,9 @@ public class GameManager : MonoBehaviour
             //
             // END ROUND
             //Func  reset positions
-            ball.rb.velocity=Vector2.zero;
-            ball.rb.position=Vector2.zero;
-            ball.transform.position = Vector3.zero;
+            ball.Reset();
             ball.LaunchBall();
-            Debug.Log("END ROUND");
+            // Debug.Log("END ROUND");
         }
     }
     public bool SurpassRounds(int value) => value >= MAX_ROUND;

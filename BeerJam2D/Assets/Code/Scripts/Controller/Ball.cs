@@ -10,7 +10,11 @@ public class Ball : MonoBehaviour
 
     [Header("Settings")]
     [Space]
+    public int touches_to_reduce;
+    public int count_touches_to_reduce;
     public float min_mass;
+    public float base_mass;
+    public float reductor_mass;
 
     void Start()
     {
@@ -21,6 +25,14 @@ public class Ball : MonoBehaviour
         trail.emitting = rb.velocity.magnitude >= fireTrailSpeed;
     }
 
+    public void Reset()
+    {
+        rb.velocity=Vector2.zero;
+        rb.position=Vector2.zero;
+        transform.position = Vector3.zero;
+        count_touches_to_reduce = 0;
+        rb.mass = base_mass;
+    }
     public void LaunchBall()
     {
         // Lanzar la pelota en una dirección aleatoria
@@ -35,8 +47,37 @@ public class Ball : MonoBehaviour
         return (Random.Range(0, 2) == 0 ? 1 : -1) * Random.Range(min,max);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // collision
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            // collision
+            if (touches_to_reduce >= count_touches_to_reduce)
+            {
+                count_touches_to_reduce++;
+            }
+            else
+            {
+                if(rb.mass > min_mass)
+                {
+                    rb.mass -= reductor_mass;
+                    if(rb.mass < min_mass) 
+                    {
+                        rb.mass = min_mass;
+                    }
+                }
+                else
+                {
+                    //Nada
+                    rb.mass = min_mass;
+                }
+            }
+        }
+
     }
+
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    // }
 }

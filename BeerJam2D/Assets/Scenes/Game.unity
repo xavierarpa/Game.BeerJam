@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 1520029286}
   - component: {fileID: 1520029285}
   - component: {fileID: 1520029284}
+  - component: {fileID: 1520029287}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -836,6 +837,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520029287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520029283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deedb66dd6b364f4db9f3394a4d825af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeIntensity: 0.1
+  shakeDuration: 0.5
 --- !u!1 &1581393357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,10 +1451,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 476619815}
     m_Modifications:
-    - target: {fileID: 3037754731431882744, guid: 1904bb0329760490fb06c11d522eaccb, type: 3}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3988163940571275469, guid: 1904bb0329760490fb06c11d522eaccb, type: 3}
       propertyPath: m_Name
       value: Ball

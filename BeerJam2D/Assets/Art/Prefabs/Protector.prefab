@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3179489128736068768}
   m_Layer: 0
   m_Name: Square Shaddow
-  m_TagString: Untagged
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 9164987180504951980}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Porteria
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3337951799485854296}
   m_Layer: 0
   m_Name: Protector
-  m_TagString: Untagged
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 4197209921025918605}
   m_Layer: 0
   m_Name: '[Colission]'
-  m_TagString: Porteria
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 8098241802422151474}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 355401009739517208}
   m_Layer: 0
   m_Name: View
-  m_TagString: Untagged
+  m_TagString: Protector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
 
     public void Shake()
     {
-        Debug.Log("shakea");
+        // Debug.Log("shakea");
         StartCoroutine(ShakeCamera());
     }
 
