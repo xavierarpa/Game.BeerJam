@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
             //stop ball
             rb.velocity = Vector2.zero;
             //apply impulse based on the collision's y position
-            float yImpulse = - (triggerObject.transform.position.y - collider.ClosestPoint(triggerObject.transform.position).y);
+            float yImpulse = -(triggerObject.transform.position.y - collider.ClosestPoint(triggerObject.transform.position).y);
             Vector2 mPos = new Vector2(direction, yImpulse);
-            
+
             rb.AddForceAtPosition(mPos * 9, collider.transform.position, ForceMode2D.Impulse);
         }
-        
+
     }
     void Update()
     {
@@ -93,6 +93,22 @@ public class PlayerController : MonoBehaviour
     private Vector3 CalculatePosition()
     {
         Vector2 nPos = Vector2.zero;
+
+        // retreat hand automatically
+        // if it's player1
+        if(direction == 1)
+        {
+            if (transform.position.x > xMin)
+            {
+                nPos.x -= direction;
+            }
+        } else //if it's player 2
+        {
+            if (transform.position.x < xMax)
+            {
+                nPos.x -= direction;
+            }
+        }
 
         //Horizontal movement
         if (Input.GetKey(leftKey))
@@ -131,7 +147,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        return (Vector3) nPos * Time.deltaTime;
+        return (Vector3)nPos * Time.deltaTime;
     }
 
     IEnumerator trigger_duration()
