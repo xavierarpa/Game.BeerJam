@@ -51,6 +51,7 @@ MonoBehaviour:
   triggerDuration: 0.3
   xMax: 1
   xMin: 6
+  direction: -1
   upKey: 273
   downKey: 274
   leftKey: 276

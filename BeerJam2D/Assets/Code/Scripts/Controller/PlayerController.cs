@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float triggerDuration = 0.3f;
     public float xMax = 4.8f;
     public float xMin = 0f;
+    public int direction = 1;
 
     [Header("Controller")]
     [Space]
@@ -49,9 +50,15 @@ public class PlayerController : MonoBehaviour
         {
             // play pop up animationif shock
             // TODO
-            Debug.Log("pelota");
             triggerObject.SetActive(false);
-            collider.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.right, transform.position);
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            //stop ball
+            rb.velocity = Vector2.zero;
+            //apply impulse based on the collision's y position
+            float yImpulse = - (triggerObject.transform.position.y - collider.ClosestPoint(triggerObject.transform.position).y);
+            Vector2 mPos = new Vector2(direction, yImpulse);
+            
+            rb.AddForceAtPosition(mPos * 9, collider.transform.position, ForceMode2D.Impulse);
         }
         
     }
@@ -100,6 +107,7 @@ public class PlayerController : MonoBehaviour
             if (transform.position.x < xMax)
             {
                 nPos.x += xSpeed;
+
             }
         }
 
