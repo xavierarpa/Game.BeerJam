@@ -50,7 +50,7 @@ MonoBehaviour:
   ySpeed: 8
   triggerDuration: 0.3
   xMax: -1
-  xMin: -6
+  xMin: -5
   xLimit_critical: 3
   direction: 1
   dashExtraSpeed: 3
@@ -59,11 +59,11 @@ MonoBehaviour:
   leftKey: 97
   rightKey: 100
   hitKey: 32
-  dashKey: 0
   obj_parent_triggers: {fileID: 2291498627831038100}
   trigger: {fileID: 7922364279429900277}
   trigger_critical: {fileID: 8873984337151851195}
   handSprite: {fileID: 8184851846796018536}
+  renderer_hand: {fileID: 4735759401956043252}
 --- !u!1001 &6675744470693458488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +126,11 @@ PrefabInstance:
 --- !u!1 &2291498627831038100 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4857145278607405740, guid: 2075a4e98578d4c19b8804057811ed97, type: 3}
+  m_PrefabInstance: {fileID: 6675744470693458488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &4735759401956043252 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2098059690968112076, guid: 2075a4e98578d4c19b8804057811ed97, type: 3}
   m_PrefabInstance: {fileID: 6675744470693458488}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6717327497865823230 stripped

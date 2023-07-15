@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
             // END GAME
             Debug.Log($"END GAME: {player}");
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
         else
         {

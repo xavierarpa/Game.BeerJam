@@ -7,15 +7,16 @@ public class PlayerController : MonoBehaviour
 
     [Header("Settings")]
     [Space]
-    public float yMax = 3.4f;
-    public float xSpeed = 11f;
-    public float ySpeed = 8f;
-    public float triggerDuration = 0.3f;
-    public float xMax = 4.8f;
-    public float xMin = 0f;
-    public float xLimit_critical = 0f;
-    public int direction = 1;
-    public float dashExtraSpeed = 3f;
+    public float yMax = default;
+    public float xSpeed = default;
+    public float ySpeed = default;
+    public float triggerDuration = default;
+    public float xMax = default;
+    public float xMin = default;
+    public float xLimit_critical = default;
+    public int direction = default;
+    public float dashExtraSpeed = default;
+    
 
     [Header("Controller")]
     [Space]
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode hitKey;
-    public KeyCode dashKey;
 
     [Header("References")]
     [Space]
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public TriggerController trigger;
     public TriggerController trigger_critical;
     public HandSprite handSprite;
+    public SpriteRenderer renderer_hand;
     private bool CanHit => !obj_parent_triggers.activeInHierarchy;
     private float dashXSpeed;
     private float dashYSpeed;
@@ -90,10 +91,23 @@ public class PlayerController : MonoBehaviour
         // Update position
         transform.position += CalculatePosition();
         HitMovement();
-        PerformDash();
 
         // P1
         trigger_critical.gameObject.SetActive(transform.position.x >= -xLimit_critical && transform.position.x >= -xLimit_critical);
+
+
+        //Update view pos
+        // Calcula la dirección desde el objeto hacia la posición objetivo
+        // Vector3 directionToTarget = Vector3.zero - transform.position;
+        // Rota el objeto hacia la posición objetivo
+        if(transform.position.x>0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(transform.position.y, transform.position.x) * Mathf.Rad2Deg);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(-transform.position.y, -transform.position.x) * Mathf.Rad2Deg);
+        }
     }
     private void OnDrawGizmosSelected()
     {
@@ -107,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
         // CRITICAL LIMIT
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(new Vector3(xLimit_critical, yMax, 0), new Vector3(xLimit_critical, -yMax, 0));
+        Gizmos.DrawLine(new Vector3(xLimit_critical * -direction, yMax, 0), new Vector3(xLimit_critical * -direction, -yMax, 0));
     }
     private void HitMovement()
     {
@@ -177,15 +191,6 @@ public class PlayerController : MonoBehaviour
 
         return (Vector3)nPos * Time.deltaTime;
     }
-
-    private void PerformDash()
-    {
-        if (Input.GetKeyDown(dashKey))
-        {
-
-        }
-    }
-
     IEnumerator trigger_duration()
     {
         obj_parent_triggers.SetActive(true);
