@@ -5,29 +5,54 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float yMax = 3.4f;
-    [SerializeField] private float xSpeed = 11f;
-    [SerializeField] private float ySpeed = 8f;
-    [SerializeField] private float triggerDuration = 0.3f;
-
+    [Header("Settings")]
+    [Space]
+    public float yMax = 3.4f;
+    public float xSpeed = 11f;
+    public float ySpeed = 8f;
+    public float triggerDuration = 0.3f;
     public float xMax = 4.8f;
     public float xMin = 0f;
+
+    [Header("Controller")]
+    [Space]
     public KeyCode upKey;
     public KeyCode downKey;
     public KeyCode leftKey;
     public KeyCode rightKey;
     public KeyCode hitKey;
 
-    private GameObject triggerObject;
-    private bool can_hit = true;
+    [Header("References")]
+    [Space]
+    public GameObject triggerObject;
+    public TriggerController trigger;
+    private bool CanHit => !triggerObject.activeInHierarchy;
 
     void Start()
     {
-        triggerObject = transform.GetChild(0).gameObject;
+        triggerObject = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         triggerObject.SetActive(false);
     }
+    private void OnEnable() => Suscribe(true);
+    private void OnDisable() => Suscribe(false);
+    private void Suscribe(bool condition)
+    {
+        if (condition) trigger.OnTrigger += OnTrigger;
+        else trigger.OnTrigger -= OnTrigger;
+    }
 
-    
+    void OnTrigger(Collider2D collider)
+    {
+        // Play GIF animati
+
+        if (collider.tag.Equals("Pelota"))
+        {
+            // play pop up animationif shock
+            // TODO
+            collider.GetComponent<Rigidbody2D>().AddForceAtPosition(Vector2.one, transform.position);
+        }
+        
+    }
     void Update()
     {
         // Update position
@@ -35,10 +60,20 @@ public class PlayerController : MonoBehaviour
         HitMovement();
 
     }
+    private void OnDrawGizmosSelected()
+    {
+        //FRONT
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(new Vector3(xMax, yMax, 0), new Vector3(xMax, -yMax, 0));
 
+        //BACK 
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(xMin, yMax, 0), new Vector3(xMin, -yMax, 0));
+
+    }
     private void HitMovement()
     {
-        if (Input.GetKeyDown(hitKey) && can_hit)
+        if (Input.GetKeyDown(hitKey) && CanHit)
         {
             StartCoroutine(trigger_duration());
         }
@@ -89,11 +124,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator trigger_duration()
     {
-        can_hit = false;
         triggerObject.SetActive(true);
         yield return new WaitForSeconds(triggerDuration);
         triggerObject.SetActive(false);
-        can_hit = true;
     }
 
 }
