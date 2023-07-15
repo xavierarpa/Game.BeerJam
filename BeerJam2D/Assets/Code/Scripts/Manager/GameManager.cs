@@ -7,8 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public const int MAX_ROUND = 3;
     public static GameManager _;
-    public BehaviourSubject<int> bs_player_1_point = new BehaviourSubject<int>(0);
-    public BehaviourSubject<int> bs_player_2_point = new BehaviourSubject<int>(0);
+
+    [Header("P1 Settings")]
+    public BehaviourSubject<int> bs_p1_point = new BehaviourSubject<int>(0);
+    public PlayerController p1 = default;
+    public Porteria porteria_p1 = default;
+
+
+    [Header("P2 Settings")]
+    public BehaviourSubject<int> bs_p2_point = new BehaviourSubject<int>(0);
+    public PlayerController p2 = default;
+    public Porteria porteria_p2 = default;
+
+
     private void Awake()
     {
         _ = this;
@@ -18,13 +29,13 @@ public class GameManager : MonoBehaviour
     private void OnDisable() => Subscribe(false);
     private void Subscribe(bool condition)
     {
-        bs_player_1_point.Subscribe(condition, CheckWinCondition_P1);
-        bs_player_2_point.Subscribe(condition, CheckWinCondition_P2);
+        bs_p1_point.Subscribe(condition, CheckWinCondition_P1);
+        bs_p2_point.Subscribe(condition, CheckWinCondition_P2);
     }
     public void ResetGame()
     {
-        bs_player_1_point.Invoke(0);
-        bs_player_2_point.Invoke(0);
+        bs_p1_point.Invoke(0);
+        bs_p2_point.Invoke(0);
     }
     public void CheckWinCondition_P1(int value) => CheckWinCondition(value, 1);
     public void CheckWinCondition_P2(int value) => CheckWinCondition(value, 2);
