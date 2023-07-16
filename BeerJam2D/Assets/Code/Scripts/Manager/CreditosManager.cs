@@ -3,15 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class CreditosManager : MonoBehaviour
 {
+    public FadeManager f;
     private void Start()
     {
-        FadeManager._.target = 0;
+        f.target = 0;
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
     private void Subscribe(bool condition)
     {
-        condition.Subscribe(ref FadeManager._.OnReachTarget, OnReachTarget);
+        condition.Subscribe(ref f.OnReachTarget, OnReachTarget);
     }
     private void Update()
     {
@@ -22,7 +23,7 @@ public class CreditosManager : MonoBehaviour
     }
     private void OnPress_Any()
     {
-        FadeManager._.target=1;
+        f.target=1;
     }    
     private void OnReachTarget(float target)
     {

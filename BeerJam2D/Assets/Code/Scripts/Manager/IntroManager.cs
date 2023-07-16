@@ -5,12 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class IntroManager : MonoBehaviour
 {
+    public FadeManager f;
     public GifComponent gif;
     private void Awake()
     {
         Application.targetFrameRate = 60;
-
-        FadeManager._.target=0;
+    }
+    private void Start()
+    {
+        f.target=0;
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
