@@ -15,23 +15,37 @@ public class EndSceneController : MonoBehaviour
     void Start()
     {
         FadeManager._.target = 0;
+        
         //if(GameManager._.lastWinner == 1)
-        if(true)
+        if(GameManager.lastWinner == 0)
         {
             text_pl1.SetActive(true);
             text_pl2.SetActive(false);
             animator.SetTrigger("Player1");
-        } else
+        } else if (GameManager.lastWinner == 1)
         {
             text_pl2.SetActive(true);
             text_pl1.SetActive(false);
             animator.SetTrigger("Player2");
+        }
+        else
+        {
+            throw new System.Exception("Ta raro :S");
         }
         SetPlateSprite();
     }
 
     void SetPlateSprite()
     {
+        if (PlayerPrefs.HasKey("LastPlato"))
+        {
+            
+        }
+        else
+        {
+            PlayerPrefs.SetInt("LastPlato", Random.Range(0, plate_sprites.Length));
+        }
+
         int id = PlayerPrefs.GetInt("LastPlato", 0);
         id++;
         if(id >= plate_sprites.Length) id = 0;

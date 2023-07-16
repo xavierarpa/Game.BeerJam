@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public Animator countdownAnimation;
 
 
-    public int lastWinner;
+    public static int lastWinner;
     public BehaviourSubject<bool> bs_is_321 = new BehaviourSubject<bool>(false);
 
     [Header("P1 Settings")]
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             lastWinner = player;
             FadeManager._.target = 1;
         }
-        // En el round 0 se ejecutará el countdown
+        // En el round 0 se ejecutarï¿½ el countdown
         else if(value != 0)
         {
             //
