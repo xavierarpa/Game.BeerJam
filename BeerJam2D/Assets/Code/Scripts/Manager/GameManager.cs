@@ -35,11 +35,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //PlayerPrefs.SetInt("LastPlato", 0);
-        //PlayerPrefs.GetInt("LastPlato", 0);
-        //PlayerPrefs.SetInt("LastPlato", PlayerPrefs.GetInt("LastPlato", 0) + 1);
-        //if()
-
         _ = this;
         AudioManager._.PlayMusic(clip_game_loop);
         ResetGame();
