@@ -1690,6 +1690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 0
+  animators:
+  - {fileID: 900093578}
+  - {fileID: 1733301484}
+  - {fileID: 422846613}
 --- !u!1 &1491734230
 GameObject:
   m_ObjectHideFlags: 0
