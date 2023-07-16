@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Space]
     public AudioClip clip_game_loop;
     public Animator countdownAnimation;
+    public AudioClip[] goal_sounds;
 
 
     public static int lastWinner;
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
     public void CheckWinCondition_P2(int value) => CheckWinCondition(value, 2);
     public void CheckWinCondition(int value, int player)
     {
+        if (value != 0) AudioManager._.PlaySound(goal_sounds[player - 1]);
         if (SurpassRounds(value))
         {
             //Ha ganao player
@@ -95,7 +97,7 @@ public class GameManager : MonoBehaviour
             lastWinner = player;
             FadeManager._F.target = 1;
         }
-        // En el round 0 se ejecutar� el countdown
+        // En el round 0 se ejecuta el countdown
         else if(value != 0)
         {
             //

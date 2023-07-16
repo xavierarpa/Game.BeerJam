@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     public float xLimit_critical = default;
     public int direction = default;
     public float dashExtraSpeed = default;
-    
+    public AudioClip[] normal_hit_sounds;
+    public AudioClip[] critical_hit_sounds;
+
 
     [Header("Controller")]
     [Space]
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.tag.Equals("Pelota"))
         {
+            AudioManager._.PlaySound(critical_hit_sounds[Random.Range(0, critical_hit_sounds.Length)]);
             Ball.PlayImpact();
             CameraController._.Shake();
             obj_parent_triggers.SetActive(false);
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour
 
         if (collider.tag.Equals("Pelota"))
         {
+            AudioManager._.PlaySound(normal_hit_sounds[Random.Range(0, normal_hit_sounds.Length)]);
             // play pop up animationif shock
             // TODO
             obj_parent_triggers.SetActive(false);

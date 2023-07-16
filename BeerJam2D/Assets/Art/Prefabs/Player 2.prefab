@@ -54,6 +54,14 @@ MonoBehaviour:
   xLimit_critical: 3
   direction: -1
   dashExtraSpeed: 3
+  normal_hit_sounds:
+  - {fileID: 8300000, guid: ed9acecd1460218459557d25c69d086f, type: 3}
+  - {fileID: 8300000, guid: 36ac599cd4fe80048a7cfa4d141322fe, type: 3}
+  critical_hit_sounds:
+  - {fileID: 8300000, guid: 3eba40e44b9aa784b8a3d1c18e718c56, type: 3}
+  - {fileID: 8300000, guid: c918c02a72c49dd46a29aa1c39419ca2, type: 3}
+  - {fileID: 8300000, guid: 000a59e212c5f7249b26af7db8dba4e3, type: 3}
+  - {fileID: 8300000, guid: 4a928825ad49a0a4b9f66422fafe2c33, type: 3}
   upKey: 273
   downKey: 274
   leftKey: 276

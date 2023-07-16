@@ -1714,6 +1714,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip_game_loop: {fileID: 8300000, guid: 5aeaff589af404eb7a499cd65d32b163, type: 3}
   countdownAnimation: {fileID: 1267053981}
+  goal_sounds:
+  - {fileID: 8300000, guid: 2b28c1b5dc394794c92f51fe13ee48bf, type: 3}
+  - {fileID: 8300000, guid: dda36a155ed622246a8d8eeebba3b640, type: 3}
   bs_is_321:
     <LastValue>k__BackingField: 0
   bs_p1_point:
