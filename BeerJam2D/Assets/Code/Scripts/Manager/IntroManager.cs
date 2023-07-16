@@ -25,11 +25,12 @@ public class IntroManager : MonoBehaviour
     }
     private void OnGifEnd() 
     {
-        // GoToMenu();
+        GoToMenu();
     }
     private void OnPressAnyKey() 
     {
         // GoToMenu();
     }
-    public void GoToMenu() => SceneManager.LoadScene("Menu");
+    public void GoToMenu() => SceneManager.LoadScene("Game");
+    // public void GoToMenu() => SceneManager.LoadScene("Menu");
 }
