@@ -20,7 +20,7 @@ public class Protector : MonoBehaviour
         if (_collision.gameObject.tag.Equals("Pelota"))
         {
             collision.gameObject.SetActive(false);
-            AudioManager._.PlayMusic(sound);
+            AudioManager._.PlaySound(sound);
         }
     }
     private void Update()

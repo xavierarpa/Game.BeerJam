@@ -291,6 +291,9 @@ MonoBehaviour:
   min_mass: 0.75
   base_mass: 1
   reductor_mass: 0.1
+  sounds:
+  - {fileID: 8300000, guid: ed9acecd1460218459557d25c69d086f, type: 3}
+  - {fileID: 8300000, guid: 36ac599cd4fe80048a7cfa4d141322fe, type: 3}
 --- !u!58 &3988163940571275471
 CircleCollider2D:
   m_ObjectHideFlags: 0

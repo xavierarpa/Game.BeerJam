@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
     public float min_mass;
     public float base_mass;
     public float reductor_mass;
+    public AudioClip[] sounds;
 
     void Awake()
     {
@@ -61,6 +62,8 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            //Play sound
+            AudioManager._.PlaySound(sounds[Random.Range(0, sounds.Length)]);
             // collision
             if (touches_to_reduce >= count_touches_to_reduce)
             {

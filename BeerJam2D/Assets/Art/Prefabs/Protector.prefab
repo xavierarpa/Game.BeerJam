@@ -217,6 +217,7 @@ MonoBehaviour:
   collision: {fileID: 1319147889108357584}
   spr: {fileID: 8098241802422151474}
   spr_shadow: {fileID: 3179489128736068768}
+  sound: {fileID: 8300000, guid: 3ff81bef58d9d5e43bcd1fa845bb4cf0, type: 3}
 --- !u!1 &6978556320720677702
 GameObject:
   m_ObjectHideFlags: 0
