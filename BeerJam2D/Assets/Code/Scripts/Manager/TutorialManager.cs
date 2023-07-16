@@ -14,17 +14,32 @@ public class TutorialManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow) && canSlide)
         {
-            Slide(-1);
+            Slide(1);
         } else if (Input.GetKeyDown(KeyCode.LeftArrow) && canSlide)
         {
-            Slide(1);
+            Slide(-1);
         }
     }
 
     public void Slide(int dir)
     {
+        Debug.Log("Slideando");
+        Debug.Log("El index actual es " + index);
         if((index == 0 && dir == -1) || (index == 2 && dir == 1))
         {
+            //Nada
+        }
+        //dir == -1: slide fuera (der)
+        else if(dir == 1)
+        {
+            animators[index].SetTrigger("SlideOut");
+            index++;
+        }
+        //dir == 1: slide dentro (izq)
+        else if (dir == -1)
+        {
+            index--;
+            animators[index].SetTrigger("SlideIn");
 
         }
         StartCoroutine(delay_to_slide());
@@ -35,39 +50,6 @@ public class TutorialManager : MonoBehaviour
         canSlide = false;
         yield return new WaitForSeconds(0.32f);
         canSlide = true;
-//    public int Index
-//    {
-//        get
-//        {
-//            return _index;
-//        }
-//        set
-//        {
-//            if (_index == value)
-//            {
-//                //Nada
-//            }
-//            else
-//            {
-//                //
-//                ActivityTutorialScreen(_index, value);
-
-//            }
-//            _index = value;
-//        }
-//    }
-//    void Start()
-//    {
-        
-//    }
-
-//    void Update()
-//    {
-        
-//    }
-//    public void ActivityTutorialScreen(int lastIndex, int nextIndex)
-//    {
-
     }
 
 }

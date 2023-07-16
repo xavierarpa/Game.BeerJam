@@ -888,9 +888,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Has ido con tu pareja a comer al restaurante Sollo.\nMientras esper\xE1is
-    la comida, decid\xEDs jugar con las chapas de la cerveza SanMiguel para pasar
-    el rato.\n\nGana el primero que meta todas las chapas en la porter\xEDa del rival."
+  m_Text: "Has ido con tu colega a comer al restaurante \"Sollo\".\nMientras esper\xE1is
+    la comida, decid\xEDs jugar con las chapas de la cerveza San Miguel para pasar
+    el rato.\n\nEl primero que meta todas las chapas en la porter\xEDa del rival
+    ser\xE1 el que se quede con el plato del d\xEDa."
 --- !u!222 &769772922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1031,7 +1032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &900093577
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1690,6 +1691,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 0
+  animators:
+  - {fileID: 900093578}
+  - {fileID: 1733301484}
+  - {fileID: 422846613}
 --- !u!1 &1491734230
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1733301483
 RectTransform:
   m_ObjectHideFlags: 0
