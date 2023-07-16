@@ -3,6 +3,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private static Ball _; 
+    public Collider2D _collider2D;
     public Rigidbody2D rb;
     public TrailRenderer trail;
     public ParticleSystem ps_handicap;

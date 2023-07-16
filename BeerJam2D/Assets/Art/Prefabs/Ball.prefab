@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af47868e9754f4b6c8fdeef61df7924f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider2D: {fileID: 3988163940571275471}
   rb: {fileID: 3037754731431882744}
   trail: {fileID: 7989267864975178411}
   ps_handicap: {fileID: 2986205122361222859}

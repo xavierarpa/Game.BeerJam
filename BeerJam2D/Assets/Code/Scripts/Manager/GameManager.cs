@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     [Space]
     public AudioClip clip_game_loop;
-    public Animator countdownAnimation; 
+    public Animator countdownAnimation;
 
+
+    public BehaviourSubject<bool> bs_is_321 = new BehaviourSubject<bool>(false);
 
     [Header("P1 Settings")]
     public BehaviourSubject<int> bs_p1_point = new BehaviourSubject<int>(0);
@@ -45,18 +47,18 @@ public class GameManager : MonoBehaviour
         condition.Subscribe(ref porteria_p1.OnPelotaCollide, OnPelotaCollidePorteria_P1);
         condition.Subscribe(ref porteria_p2.OnPelotaCollide, OnPelotaCollidePorteria_P2);
     }
-    private void StartCountdown()
-    {
-        countdownAnimation.SetTrigger("321");
-        StartCoroutine(start_countdown());
-    }
+   
     public void ResetGame()
     {
         bs_p1_point.Invoke(0);
         bs_p2_point.Invoke(0);
         ball.Reset();
         StartCountdown();
-
+    }
+    private void StartCountdown()
+    {
+        countdownAnimation.SetTrigger("321");
+        StartCoroutine(start_countdown());
     }
     public void OnPelotaCollidePorteria_P1() => bs_p2_point.Invoke(bs_p2_point.LastValue + 1);
     public void OnPelotaCollidePorteria_P2() => bs_p1_point.Invoke(bs_p1_point.LastValue + 1);
@@ -90,7 +92,11 @@ public class GameManager : MonoBehaviour
     public void Replay() => SceneManager.LoadScene("Game");
     IEnumerator start_countdown()
     {
+        bs_is_321.Invoke(true);
+        ball._collider2D.enabled = false;
         yield return new WaitForSeconds(3f);
+        ball._collider2D.enabled = true;
         ball.LaunchBall();
+        bs_is_321.Invoke(false);
     }
 }

@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
         condition.Subscribe(ref trigger.OnTrigger, OnTrigger);
         condition.Subscribe(ref trigger_critical.OnTrigger, OnTrigger_Critical);
     }
-
     void OnTrigger_Critical(Collider2D collider)
     {
         if (collider.tag.Equals("Pelota"))
@@ -154,24 +153,50 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Horizontal movement
-        if (Input.GetKey(leftKey))
-        {
-            // Check it is within range
-            if (transform.position.x > xMin)
-            {
-                nPos.x -= xSpeed;
-            }
-        }
-        else if (Input.GetKey(rightKey))
-        {
-            // Check it is within range
-            if (transform.position.x < xMax)
-            {
-                nPos.x += xSpeed;
 
+
+
+
+        if (GameManager._.bs_is_321.LastValue)
+        {
+            // Nada
+            if (direction == 1)
+            {
+                if (transform.position.x > xMin)
+                {
+                    nPos.x -= direction;
+                }
+            }
+            else //if it's player 2
+            {
+                if (transform.position.x < xMax)
+                {
+                    nPos.x -= direction;
+                }
             }
         }
+        else
+        {
+            //Horizontal movement
+            if (Input.GetKey(leftKey))
+            {
+                // Check it is within range
+                if (transform.position.x > xMin)
+                {
+                    nPos.x -= xSpeed;
+                }
+            }
+            else if (Input.GetKey(rightKey))
+            {
+                // Check it is within range
+                if (transform.position.x < xMax)
+                {
+                    nPos.x += xSpeed;
+
+                }
+            }
+        }
+
 
         // Vertical movement
         if (Input.GetKey(upKey))
@@ -190,6 +215,7 @@ public class PlayerController : MonoBehaviour
                 nPos.y -= ySpeed;
             }
         }
+
 
         return (Vector3)nPos * Time.deltaTime;
     }
