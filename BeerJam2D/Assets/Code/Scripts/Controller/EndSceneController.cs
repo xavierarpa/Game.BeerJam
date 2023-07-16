@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EndSceneController : MonoBehaviour
 {
@@ -16,13 +17,12 @@ public class EndSceneController : MonoBehaviour
     {
         FadeManager._.target = 0;
         
-        //if(GameManager._.lastWinner == 1)
-        if(GameManager.lastWinner == 0)
+        if(GameManager.lastWinner == 1)
         {
             text_pl1.SetActive(true);
             text_pl2.SetActive(false);
             animator.SetTrigger("Player1");
-        } else if (GameManager.lastWinner == 1)
+        } else if (GameManager.lastWinner == 2)
         {
             text_pl2.SetActive(true);
             text_pl1.SetActive(false);
@@ -33,6 +33,18 @@ public class EndSceneController : MonoBehaviour
             throw new System.Exception("Ta raro :S");
         }
         SetPlateSprite();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
+        {
+            Replay();
+        }
+        else
+        {
+            //Nada
+        }
     }
 
     void SetPlateSprite()
@@ -52,5 +64,6 @@ public class EndSceneController : MonoBehaviour
         PlayerPrefs.SetInt("LastPlato", id);
         plate.sprite = plate_sprites[id];
     }
+    public void Replay() => SceneManager.LoadScene("Game");
 
 }
