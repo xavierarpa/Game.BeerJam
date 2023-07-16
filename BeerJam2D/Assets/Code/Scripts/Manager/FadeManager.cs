@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
-    public static FadeManager _;
+    public static FadeManager _F;
     public Image img;
     public float target;
     public float speed;
     public Action<float> OnReachTarget;
     private void Awake()
     {
-        _ = this;
+        _F = this;
         ChangeColorInstant();
     }
     void Update()

@@ -8,6 +8,7 @@ public class Protector : MonoBehaviour
     public CollisionController collision = default;
     public SpriteRenderer spr;
     public SpriteRenderer spr_shadow;
+    public AudioClip sound;
     private void OnEnable() => Suscribe(true);
     private void OnDisable() => Suscribe(false);
     private void Suscribe(bool condition)
@@ -19,6 +20,7 @@ public class Protector : MonoBehaviour
         if (_collision.gameObject.tag.Equals("Pelota"))
         {
             collision.gameObject.SetActive(false);
+            AudioManager._.PlayMusic(sound);
         }
     }
     private void Update()

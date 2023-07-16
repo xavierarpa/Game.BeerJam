@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        FadeManager._.target = 0;
+        FadeManager._F.target = 0;
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         bs_p2_point.Subscribe(condition, CheckWinCondition_P2);
         condition.Subscribe(ref porteria_p1.OnPelotaCollide, OnPelotaCollidePorteria_P1);
         condition.Subscribe(ref porteria_p2.OnPelotaCollide, OnPelotaCollidePorteria_P2);
-        condition.Subscribe(ref FadeManager._.OnReachTarget, OnReachTarget);
+        condition.Subscribe(ref FadeManager._F.OnReachTarget, OnReachTarget);
     }
     public void OnReachTarget(float target)
     {
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
             // Debug.Log($"END GAME: {player}");
             //Time.timeScale = 0;
             lastWinner = player;
-            FadeManager._.target = 1;
+            FadeManager._F.target = 1;
         }
         // En el round 0 se ejecutar� el countdown
         else if(value != 0)

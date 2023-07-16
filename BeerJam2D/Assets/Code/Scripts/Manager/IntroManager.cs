@@ -31,7 +31,7 @@ public class IntroManager : MonoBehaviour
     private void Subscribe(bool condition)
     {
         condition.Subscribe(ref gif.OnGifEnd, OnGifEnd);
-        condition.Subscribe(ref FadeManager._.OnReachTarget, OnReachTarget);
+        condition.Subscribe(ref f.OnReachTarget, OnReachTarget);
     }
     public void OnReachTarget(float target)
     {
@@ -46,6 +46,6 @@ public class IntroManager : MonoBehaviour
     }
     private void OnGifEnd() => ReadyToGoToMenu();
     private void OnPressAnyKey() => ReadyToGoToMenu();
-    public void ReadyToGoToMenu() => FadeManager._.target=1;
+    public void ReadyToGoToMenu() => f.target=1;
     public void GoToMenu() => SceneManager.LoadScene("Menu");
 }

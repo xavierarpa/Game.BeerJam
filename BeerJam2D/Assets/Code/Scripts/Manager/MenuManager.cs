@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         animator.SetTrigger("Display");
-        FadeManager._.target=0;
+        FadeManager._F.target=0;
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);

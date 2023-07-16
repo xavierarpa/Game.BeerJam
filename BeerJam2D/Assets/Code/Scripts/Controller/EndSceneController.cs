@@ -16,7 +16,7 @@ public class EndSceneController : MonoBehaviour
     
     void Start()
     {
-        FadeManager._.target = 0;
+        FadeManager._F.target = 0;
 
         if(GameManager.lastWinner == 1)
         {

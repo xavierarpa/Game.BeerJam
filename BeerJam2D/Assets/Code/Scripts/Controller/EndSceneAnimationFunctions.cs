@@ -8,7 +8,7 @@ public class EndSceneAnimationFunctions : MonoBehaviour
 
     public void FadeToEat()
     {
-        FadeManager._.target = 1;
+        FadeManager._F.target = 1;
     }
 
     public void ReturnToMenu() => SceneManager.LoadScene("Menu");
