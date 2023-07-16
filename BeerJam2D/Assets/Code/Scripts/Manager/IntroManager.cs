@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class IntroManager : MonoBehaviour
 {
     public GifComponent gif;
+    private void Awake()
+    {
+        FadeManager._.target=0;
+    }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
     private void Update()
@@ -22,15 +26,21 @@ public class IntroManager : MonoBehaviour
     private void Subscribe(bool condition)
     {
         condition.Subscribe(ref gif.OnGifEnd, OnGifEnd);
+        condition.Subscribe(ref FadeManager._.OnReachTarget, OnReachTarget);
     }
-    private void OnGifEnd() 
+    public void OnReachTarget(float target)
     {
-        GoToMenu();
+        if(target == 1)
+        {
+            GoToMenu();
+        }
+        else if( target == 0)
+        {
+            
+        }
     }
-    private void OnPressAnyKey() 
-    {
-        // GoToMenu();
-    }
-    public void GoToMenu() => SceneManager.LoadScene("Game");
-    // public void GoToMenu() => SceneManager.LoadScene("Menu");
+    private void OnGifEnd() => ReadyToGoToMenu();
+    private void OnPressAnyKey() => ReadyToGoToMenu();
+    public void ReadyToGoToMenu() => FadeManager._.target=1;
+    public void GoToMenu() => SceneManager.LoadScene("Menu");
 }
