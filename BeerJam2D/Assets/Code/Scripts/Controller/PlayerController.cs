@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
         HitMovement();
 
         // P1
-        trigger_critical.gameObject.SetActive(transform.position.x >= -xLimit_critical && transform.position.x >= -xLimit_critical);
+        trigger_critical.gameObject.SetActive(transform.position.x >= -xLimit_critical && transform.position.x <= xLimit_critical);
 
 
         //Update view pos
