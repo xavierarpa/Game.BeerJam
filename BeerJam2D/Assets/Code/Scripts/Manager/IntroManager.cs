@@ -8,6 +8,8 @@ public class IntroManager : MonoBehaviour
     public GifComponent gif;
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+
         FadeManager._.target=0;
     }
     private void OnEnable() => Subscribe(true);

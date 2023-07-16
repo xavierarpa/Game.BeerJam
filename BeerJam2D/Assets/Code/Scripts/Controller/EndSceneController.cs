@@ -11,12 +11,13 @@ public class EndSceneController : MonoBehaviour
     public GameObject text_pl2;
     public Image plate;
     public Sprite[] plate_sprites;
-    
+
+    private bool canHit = false;
     
     void Start()
     {
         FadeManager._.target = 0;
-        
+
         if(GameManager.lastWinner == 1)
         {
             text_pl1.SetActive(true);
@@ -32,18 +33,24 @@ public class EndSceneController : MonoBehaviour
         {
             throw new System.Exception("Ta raro :S");
         }
+
+        StartCoroutine(delay_to_hit());
+
         SetPlateSprite();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl))
+        if (canHit)
         {
-            Replay();
-        }
-        else
-        {
-            //Nada
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Replay();
+            }
+            else
+            {
+                //Nada
+            }
         }
     }
 
@@ -65,5 +72,11 @@ public class EndSceneController : MonoBehaviour
         plate.sprite = plate_sprites[id];
     }
     public void Replay() => SceneManager.LoadScene("Game");
+
+    IEnumerator delay_to_hit()
+    {
+        yield return new WaitForSeconds(1.1f);
+        canHit = true;
+    }
 
 }
