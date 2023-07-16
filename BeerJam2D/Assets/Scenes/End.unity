@@ -1000,6 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b1bf9862a53314d85aed7ea1c6e548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: aa2b0721de270af4d878966112d3a52d, type: 3}
   animator: {fileID: 1902003271}
   text_pl1: {fileID: 1946096257}
   text_pl2: {fileID: 1192689510}

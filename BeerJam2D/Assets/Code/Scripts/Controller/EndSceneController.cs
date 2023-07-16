@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EndSceneController : MonoBehaviour
 {
+    public AudioClip clip;
     public Animator animator;
     public GameObject text_pl1;
     public GameObject text_pl2;
@@ -14,6 +15,10 @@ public class EndSceneController : MonoBehaviour
 
     private bool canHit = false;
     
+    void Awake()
+    {
+        AudioManager._.PlayMusic(clip);
+    }
     void Start()
     {
         FadeManager._F.target = 0;
