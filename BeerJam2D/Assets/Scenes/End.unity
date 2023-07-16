@@ -905,7 +905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb53085f7548958409c99a9a1fe9e8a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80f2001e3ee5b040bb05e98afeefbb5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1001,6 +1001,14 @@ MonoBehaviour:
   animator: {fileID: 1902003271}
   text_pl1: {fileID: 1946096257}
   text_pl2: {fileID: 1192689510}
+  plate: {fileID: 1725529697}
+  plate_sprites:
+  - {fileID: 21300000, guid: f80f2001e3ee5b040bb05e98afeefbb5, type: 3}
+  - {fileID: 21300000, guid: bb53085f7548958409c99a9a1fe9e8a0, type: 3}
+  - {fileID: 21300000, guid: 27bb08d2397bb5448b1f203e6a027e01, type: 3}
+  - {fileID: 21300000, guid: a0ca4b64786e45346806030b342d20cc, type: 3}
+  - {fileID: 21300000, guid: b70bb3d1ec5d95c4681e7e4139e5ecfc, type: 3}
+  - {fileID: 21300000, guid: 3e76143b2be0191448f6ed27d70fa798, type: 3}
 --- !u!1 &1902003266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1409,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb53085f7548958409c99a9a1fe9e8a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f80f2001e3ee5b040bb05e98afeefbb5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
