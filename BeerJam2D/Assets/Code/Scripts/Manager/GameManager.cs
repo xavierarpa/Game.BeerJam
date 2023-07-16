@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Animator countdownAnimation;
 
 
+    public static readonly BehaviourSubject<int> bs_lastWinner = new BehaviourSubject<int>(0);
     public BehaviourSubject<bool> bs_is_321 = new BehaviourSubject<bool>(false);
 
     [Header("P1 Settings")]
@@ -34,9 +35,18 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("LastPlato", 0);
+        //PlayerPrefs.GetInt("LastPlato", 0);
+        //PlayerPrefs.SetInt("LastPlato", PlayerPrefs.GetInt("LastPlato", 0) + 1);
+        //if()
+
         _ = this;
         AudioManager._.PlayMusic(clip_game_loop);
         ResetGame();
+    }
+    private void Start()
+    {
+        FadeManager._.target = 0;
     }
     private void OnEnable() => Subscribe(true);
     private void OnDisable() => Subscribe(false);
@@ -46,8 +56,20 @@ public class GameManager : MonoBehaviour
         bs_p2_point.Subscribe(condition, CheckWinCondition_P2);
         condition.Subscribe(ref porteria_p1.OnPelotaCollide, OnPelotaCollidePorteria_P1);
         condition.Subscribe(ref porteria_p2.OnPelotaCollide, OnPelotaCollidePorteria_P2);
+        condition.Subscribe(ref FadeManager._.OnReachTarget, OnReachTarget);
     }
-   
+    public void OnReachTarget(float target)
+    {
+        if(target == 1)
+        {
+            //Ha ganao
+            GoToEnd();
+        }
+        else if( target == 0)
+        {
+            //Termina el fade
+        }
+    }
     public void ResetGame()
     {
         bs_p1_point.Invoke(0);
@@ -74,7 +96,8 @@ public class GameManager : MonoBehaviour
 
             // END GAME
             // Debug.Log($"END GAME: {player}");
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
+            FadeManager._.target = 1;
         }
         // En el round 0 se ejecutará el countdown
         else if(value != 0)
@@ -90,6 +113,7 @@ public class GameManager : MonoBehaviour
     public bool SurpassRounds(int value) => value >= MAX_ROUND;
     public void GoToMenu() => SceneManager.LoadScene("Menu");
     public void Replay() => SceneManager.LoadScene("Game");
+    public void GoToEnd() => SceneManager.LoadScene("End");
     IEnumerator start_countdown()
     {
         bs_is_321.Invoke(true);
