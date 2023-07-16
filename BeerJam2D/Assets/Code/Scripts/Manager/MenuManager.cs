@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     public Button btn_credit;
     public Button btn_lechegamer;
     public Button btn_sanmiguel;
+    public Button btn_exit;
 
     private void Awake() 
     {
@@ -35,6 +36,7 @@ public class MenuManager : MonoBehaviour
         condition.Subscribe(ref btn_credit, OnPress_Credit);
         condition.Subscribe(ref btn_lechegamer, OnPress_LeChefGamer);
         condition.Subscribe(ref btn_sanmiguel, OnPress_SanMiguel);
+        condition.Subscribe(ref btn_exit, OnPress_Exit);
     }
     private void OnPress_Play()
     {
