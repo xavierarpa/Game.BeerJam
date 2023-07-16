@@ -19,7 +19,7 @@ public sealed class AudioManager : MonoBehaviour
     }
     public void PlayMusic(AudioClip clip)
     {
-        // if(_.src_music.clip == clip) return;
+        if(_.src_music.clip == clip) return;
         _.src_music.clip = clip;
         _.src_music.Play();
     }
