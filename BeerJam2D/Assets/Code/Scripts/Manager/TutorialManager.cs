@@ -35,6 +35,39 @@ public class TutorialManager : MonoBehaviour
         canSlide = false;
         yield return new WaitForSeconds(0.32f);
         canSlide = true;
+//    public int Index
+//    {
+//        get
+//        {
+//            return _index;
+//        }
+//        set
+//        {
+//            if (_index == value)
+//            {
+//                //Nada
+//            }
+//            else
+//            {
+//                //
+//                ActivityTutorialScreen(_index, value);
+
+//            }
+//            _index = value;
+//        }
+//    }
+//    void Start()
+//    {
+        
+//    }
+
+//    void Update()
+//    {
+        
+//    }
+//    public void ActivityTutorialScreen(int lastIndex, int nextIndex)
+//    {
+
     }
 
 }
