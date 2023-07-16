@@ -58,7 +58,7 @@ MonoBehaviour:
   downKey: 274
   leftKey: 276
   rightKey: 275
-  hitKey: 305
+  hitKey: 13
   obj_parent_triggers: {fileID: 8405875346797843226}
   trigger: {fileID: 476051827815281787}
   trigger_critical: {fileID: 1174343804868864309}
